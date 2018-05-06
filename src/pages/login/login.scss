@@ -1,0 +1,69 @@
+page-login {
+	.login-layer{
+		background:url("../assets/imgs/rendang.jpg");
+		background-size: 100% 100%;
+		height: 100%; 
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+		width:100%;
+		height:100%;
+		position:fixed;
+		top:1px;
+		left:0;
+		z-index:-1;
+	}
+	.login-layer2{
+		background:#000;
+		opacity:0.7;
+	    background-size: cover;
+		width:100%;
+		height:100%;
+		position:fixed;
+		top:0;
+		left:0;
+	}
+	.login-back{
+		margin-top:2rem;
+		background:transparent;
+		color:#FFF;
+		font-size:2rem;
+	}
+	.login-form{
+		margin-top:3rem;
+		h1{
+			color:#FFF;
+			font-size:4rem;
+			font-weight:bold;
+		}
+		ion-item{
+			background:transparent;
+			ion-icon{
+				color:#FFF;
+			}
+		}
+		ion-input{
+			color:map-get($colors, third);
+			padding:2px 1rem;
+			font-size:2rem;
+		}
+		.item-md.item-input.input-has-focus .item-inner {
+		  border-bottom-color: map-get($colors, third) !important;
+		}
+		.list-md .item-input.input-has-focus:last-child {
+		  border-bottom-color: map-get($colors, third) !important;
+		}
+		.item-input-has-focus .label-md[floating], .input-has-focus .label-md[floating]{
+		        color:  map-get($colors, third); //label color when focusing
+		}
+		.item-input .label-md{
+		        color:  map-get($colors, light); //label color
+		}
+		button{
+			text-transform:capitalize;
+			font-weight:bold;
+			font-size:2.5rem;
+			height:5rem;
+		}
+	}
+}
