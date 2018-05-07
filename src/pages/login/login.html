@@ -32,7 +32,7 @@
 					  <ion-item>
     					<ion-icon name="person" item-start></ion-icon>
 					    <ion-label floating>Username</ion-label>
-					    <ion-input type="text" item-end></ion-input>
+					    <ion-input type="text" [(ngModel)]="username" item-end></ion-input>
 					  </ion-item>
 
 					  <ion-item>
@@ -45,7 +45,7 @@
 	    				</button>
 					  </ion-item>
 					</ion-list>
-					<button ion-button class="btn" color="third2" block>Log In</button>
+					<button ion-button class="btn" color="third2" (click)="login()" block>Log In</button>
 				</ion-col>
 			</ion-row>
 		</ion-grid>

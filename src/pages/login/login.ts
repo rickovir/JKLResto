@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Http, Headers } from '@angular/http';
+import CryptoJS from 'crypto-js';
 import { StartPage } from '../../pages/start/start';
 
 /**
@@ -16,8 +18,10 @@ import { StartPage } from '../../pages/start/start';
 })
 export class LoginPage {
   passType:string;
+  username:string;
+  password:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http:Http) {
   	this.passType="password";
   }
 
@@ -39,5 +43,27 @@ export class LoginPage {
   gotoStart()
   {
   	this.navCtrl.setRoot(StartPage);
+  }
+  login()
+  {
+    let hashpassword = CryptoJS.SHA256(this.password,'ricko').toString();
+    let dataPOST = {
+      username : btoa(this.username),
+      password : hashpassword
+    };
+
+    // console.log(data);
+
+    let headers = new Headers();
+    headers.append('Content-Type','application/json');
+        this.http.post('http://localhost:3000/api/auth', JSON.stringify(dataPOST), {headers: headers})
+       .map(res => res.json())
+       .subscribe(
+         data=>{
+           console.log(data);
+           // if(data ==1)
+           //   console.log("login berhasil");
+           
+         });
   }
 }
