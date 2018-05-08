@@ -1,3 +1,79 @@
 page-home {
+	.home-header{
+		background-color:#FFF;
+	}
+	.home-content{
+		background-color: map-get($colors, light);
+	}
+	.title{
+		margin:1rem 2rem;
+	}
+	.home-cuisine1{
+		background:url("../assets/imgs/rendang.jpg");
+		background-size: 100% 100%;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;		
+		border-radius:1rem;
+		width:100%;
+		height:100%;
+		padding:1rem;
+		text-align:center;
+		p{
+			margin:auto;
+		}
+	}
 
+	.home-cuisine2{
+		background:url("../assets/imgs/tongseng.jpg");
+		background-size: 100% 100%;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+		border-radius:1rem;
+		width:100%;
+		height:100%;
+		padding:1rem;
+		text-align:center;
+		p{
+			margin:auto;
+		}
+    }
+
+	.home-cuisine3{
+		background:url("../assets/imgs/rendang.jpg");
+		background-size: 100% 100%;
+	    background-position: center;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+		border-radius:1rem;
+		width:100%;
+		height:100%;
+		padding:1rem;
+		text-align:center;
+		p{
+			margin:auto;
+		}
+    }
+	.home-card{
+		margin:0;
+		margin-top:1rem;
+		width:100%;
+		box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 1px -2px rgba(0, 0, 0, 0.2), 0 0px 0px 0 rgba(0, 0, 0, 0.12);
+	}
+	.home-card-img
+	{
+		height:225px;
+		overflow:hidden;
+  		position: relative;
+	}
+	.home-card-img img {
+	  position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  width: auto;
+	  -webkit-transform: translate(-50%,-50%);
+	      -ms-transform: translate(-50%,-50%);
+	          transform: translate(-50%,-50%);
+	}
 }

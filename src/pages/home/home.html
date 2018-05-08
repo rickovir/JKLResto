@@ -1,17 +1,76 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+<ion-header class="home-header">
+  <h1 class="title" ion-text color="danger2">JKL Resto</h1>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="search" item-start></ion-icon>
+        <h3 ion-text color="dark">Makan Dimana ?</h3>
+      </ion-item>
+    </ion-list>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content padding class="home-content">
+    <p ion-text>Pilih tipe restaurant yang kamu mau</p>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <div class="home-cuisine1">
+            <p ion-text color="light">Enak</p>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="home-cuisine2">
+            <p ion-text color="light">Enak</p>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="home-cuisine3">
+            <p ion-text color="light">Enak</p>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="home-cuisine1">
+            <p ion-text color="light">Enak</p>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="home-cuisine2">
+            <p ion-text color="light">Enak</p>
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <div class="home-cuisine3">
+            <p ion-text color="light">Enak</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <p ion-text>Atau lihat restaurant terdekat aja</p>
+    <ion-card class="home-card">
+        <div class="home-card-img">
+          <img src="assets/imgs/rendang.jpg"/>
+        </div>
+        <ion-card-content>
+          <ion-card-title>
+            <b>Rendang Sehat</b>
+            </ion-card-title>
+          <p>
+            Jl. Krendang Raya No. 11, Tambora, Jakarta
+          </p>
+        </ion-card-content>
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left clear small color="dark">
+              <ion-icon name="pin"></ion-icon>
+              <div>Gajah Mada</div>
+            </button>
+          </ion-col>
+
+          <ion-col>
+            <button ion-button icon-left clear small color="danger">
+              <ion-icon name="heart"></ion-icon>
+              <div>3.7 Rate</div>
+            </button>
+          </ion-col>
+        </ion-row>
+    </ion-card>
 </ion-content>
