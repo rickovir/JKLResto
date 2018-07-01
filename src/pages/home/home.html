@@ -1,7 +1,7 @@
 <ion-header class="home-header">
   <h1 class="title" ion-text color="danger2">JKL Resto</h1>
     <ion-list>
-      <ion-item>
+      <ion-item (click)="openSearch()">
         <ion-icon name="search" item-start></ion-icon>
         <h3 ion-text color="dark">Makan Dimana ?</h3>
       </ion-item>
@@ -9,68 +9,58 @@
 </ion-header>
 
 <ion-content padding class="home-content">
-    <p ion-text>Pilih tipe restaurant yang kamu mau</p>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
+    <p ion-text>Jenis restaurant paling populer</p>
     <ion-grid>
       <ion-row>
-        <ion-col col-6>
-          <div class="home-cuisine1">
-            <p ion-text color="light">Enak</p>
+
+        <ion-col col-6 *ngFor="let cuisine of cuisines let i = index" [attr.data-index]="i">
+          <div class="home-cuisine{{ i%4 }}" (click)=openCuisine(cuisine)>
+            <p ion-text color="light">{{ cuisine }}</p>
           </div>
         </ion-col>
-        <ion-col col-6>
-          <div class="home-cuisine2">
-            <p ion-text color="light">Enak</p>
-          </div>
-        </ion-col>
-        <ion-col col-6>
-          <div class="home-cuisine3">
-            <p ion-text color="light">Enak</p>
-          </div>
-        </ion-col>
-        <ion-col col-6>
-          <div class="home-cuisine1">
-            <p ion-text color="light">Enak</p>
-          </div>
-        </ion-col>
-        <ion-col col-6>
-          <div class="home-cuisine2">
-            <p ion-text color="light">Enak</p>
-          </div>
-        </ion-col>
-        <ion-col col-6>
-          <div class="home-cuisine3">
-            <p ion-text color="light">Enak</p>
-          </div>
-        </ion-col>
+
       </ion-row>
     </ion-grid>
     <p ion-text>Atau lihat restaurant terdekat aja</p>
-    <ion-card class="home-card">
+    <ion-card class="home-card" *ngFor="let nearbyRest of restaurants">
+      <div (click)="goToDetail(nearbyRest.restaurant.R.res_id)">
         <div class="home-card-img">
-          <img src="assets/imgs/rendang.jpg"/>
+          <img src="{{nearbyRest.restaurant.thumb}}"/>
         </div>
         <ion-card-content>
           <ion-card-title>
-            <b>Rendang Sehat</b>
+            <b> {{nearbyRest.restaurant.name}} </b>
             </ion-card-title>
+            <ion-badge color="secondary2">
+              <h1>{{ nearbyRest.restaurant.user_rating.aggregate_rating }}</h1>
+            </ion-badge>
           <p>
-            Jl. Krendang Raya No. 11, Tambora, Jakarta
+            {{ nearbyRest.restaurant.location.address }}
           </p>
         </ion-card-content>
         <ion-row>
           <ion-col>
             <button ion-button icon-left clear small color="dark">
               <ion-icon name="pin"></ion-icon>
-              <div>Gajah Mada</div>
+              <div>{{ nearbyRest.restaurant.location.locality }}</div>
             </button>
           </ion-col>
 
           <ion-col>
             <button ion-button icon-left clear small color="danger">
-              <ion-icon name="heart"></ion-icon>
-              <div>3.7 Rate</div>
+              <ion-icon name="{{ levelLike(nearbyRest.restaurant.user_rating.aggregate_rating) }}"></ion-icon>
+              <div>{{ nearbyRest.restaurant.user_rating.votes }} Like</div>
             </button>
           </ion-col>
         </ion-row>
+      </div>
     </ion-card>
 </ion-content>

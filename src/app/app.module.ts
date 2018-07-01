@@ -10,11 +10,20 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StartPage } from '../pages/start/start';
 import { LoginPage } from '../pages/login/login';
 import { DaftarPage } from '../pages/daftar/daftar';
+import { ModalSearchPage } from '../pages/modal-search/modal-search';
+import { ModalCuisinePage } from '../pages/modal-cuisine/modal-cuisine';
+import { RestaurantProfilePage } from '../pages/restaurant-profile/restaurant-profile';
+import { SpeechPage } from '../pages/speech/speech';
 
 import { HttpModule } from '@angular/http';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ZomatoProvider } from '../providers/zomato/zomato';
+
+import { Geolocation } from '@ionic-native/geolocation';
+import { IonicStorageModule } from '@ionic/storage';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 @NgModule({
   declarations: [
@@ -25,12 +34,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     StartPage,
     LoginPage,
-    DaftarPage
+    DaftarPage,
+    SpeechPage,
+    ModalSearchPage,
+    ModalCuisinePage,
+    RestaurantProfilePage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,12 +55,19 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     StartPage,
     LoginPage,
-    DaftarPage
+    SpeechPage,
+    DaftarPage,
+    ModalSearchPage,
+    ModalCuisinePage,
+    RestaurantProfilePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    SpeechRecognition,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Geolocation,
+    ZomatoProvider
   ]
 })
 export class AppModule {}

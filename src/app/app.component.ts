@@ -4,8 +4,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 // import { TabsPage } from '../pages/tabs/tabs';
-// import { StartPage } from '../pages/start/start';
-import { HomePage } from '../pages/home/home';
+import { StartPage } from '../pages/start/start';
+// import { ModalSearchPage } from '../pages/modal-search/modal-search';
+// import { SpeechPage } from '../pages/speech/speech';
+// import { HomePage } from '../pages/home/home';
+// import { RestaurantProfilePage } from '../pages/restaurant-profile/restaurant-profile';
 // import { LoginPage } from '../pages/login/login';
 // import { DaftarPage } from '../pages/daftar/daftar';
 
@@ -13,7 +16,7 @@ import { HomePage } from '../pages/home/home';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = StartPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

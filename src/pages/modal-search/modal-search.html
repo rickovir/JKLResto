@@ -1,0 +1,63 @@
+<!--
+  Generated template for the ModalSearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="search-header">
+
+ <ion-list no-lines>
+  <ion-item>
+	<button ion-button (click)="dismiss()" item-start>
+		<ion-icon name="arrow-back"></ion-icon>
+	</button>
+
+    <ion-icon name="search" item-start></ion-icon>
+    <ion-input id="cari" #searchInput type="text" [(ngModel)]="query" placeholder="Makan Dimana ?" item-end (ionChange)="trySearch()" ></ion-input> 
+    <button ion-button item-end color="light" (click)="doListening()" clear icon-start>
+    	<ion-icon name="mic" color="danger"></ion-icon>
+	</button>    
+<!--     <button ion-button item-end color="light" (click)="changeNow()" clear icon-start>
+    	<ion-icon name="arrow-forward"></ion-icon>
+	</button>     -->
+  </ion-item>
+</ion-list>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-card class="search-card" *ngFor="let searchRest of restaurants">
+      <div (click)="goToDetail(searchRest.restaurant.R.res_id)">
+		<div class="search-card-img">
+		  <img src="{{searchRest.restaurant.thumb}}"/>
+		</div>
+		<ion-card-content>
+		  <ion-card-title>
+		    <b> {{searchRest.restaurant.name}} </b>
+		    </ion-card-title>
+		    <ion-badge color="secondary2">
+		      <h1>{{ searchRest.restaurant.user_rating.aggregate_rating }}</h1>
+		    </ion-badge>
+		  <p>
+		    {{ searchRest.restaurant.location.address }}
+		  </p>
+		</ion-card-content>
+		<ion-row>
+		  <ion-col>
+		    <button ion-button icon-left clear small color="dark">
+		      <ion-icon name="pin"></ion-icon>
+		      <div>{{ searchRest.restaurant.location.locality }}</div>
+		    </button>
+		  </ion-col>
+
+		  <ion-col>
+		    <button ion-button icon-left clear small color="danger">
+		      <ion-icon name="{{ levelLike(searchRest.restaurant.user_rating.aggregate_rating) }}"></ion-icon>
+		      <div>{{ searchRest.restaurant.user_rating.votes }} Like</div>
+		    </button>
+		  </ion-col>
+		</ion-row>
+		</div>
+	</ion-card>
+</ion-content>

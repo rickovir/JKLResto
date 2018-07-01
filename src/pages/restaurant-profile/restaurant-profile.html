@@ -1,0 +1,100 @@
+<!--
+  Generated template for the RestaurantProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content padding class="profile-content" *ngIf="loaded">
+	<ion-list no-lines class="profile-header">
+		<ion-item>
+			<button ion-button (click)="goBack()" item-start>
+				<ion-icon name="arrow-back"></ion-icon>
+			</button>
+
+			<p item-start>Restaurant Profile</p>
+		</ion-item>
+	</ion-list>
+
+	<div class="profile-featured-img">
+		<img src="{{detailProfile.featured_image}}">
+	</div>
+
+	<ion-card class="profile-details">
+
+		<ion-card-header>
+			<ion-item>
+				<h1 text-wrap item-start>{{detailProfile.name}}</h1>
+				<div item-end>
+					<span>{{ getDistance(detailProfile.location.latitude,detailProfile.location.longitude) }} Meter</span>  
+					<ion-icon name="car"></ion-icon>
+				</div>
+			</ion-item>
+			<p>{{detailProfile.location.address}}</p>
+		</ion-card-header>
+
+		<ion-card-content>
+			<div style="margin-left: 1rem;">
+				<ion-badge color="light2" *ngFor="let cuisine of detailProfile.cuisines.split(',')">{{cuisine}}
+				</ion-badge>
+
+			</div>
+			<ion-item>
+				<div class="ratings" item-start>
+				    <div class="empty-stars"></div>
+				    <div class="full-stars" [style.width.%]="starRating(detailProfile.user_rating.aggregate_rating)"></div>
+				</div>
+				<div class="points" item-end style="text-align: right">
+					<p class="points-reviews">({{detailProfile.user_rating.votes}} Reviews)</p>
+					<ion-badge class="points-detail" color="danger">
+					{{detailProfile.user_rating.aggregate_rating}}
+					</ion-badge>
+				</div>
+			</ion-item>
+			<button *ngIf="!detail" ion-button outline color="primary" (click)="showDetail()">Show Detail</button>
+			<ion-list *ngIf="detail">
+				<ion-item>
+					<h2>Alamat</h2>
+					<p>{{detailProfile.location.address}}</p>
+				</ion-item>
+				<ion-item>
+					<h2>Locality</h2>
+					<p>{{detailProfile.location.locality_verbose}}</p>
+				</ion-item>
+				<ion-item>
+					<h2>Menu</h2>
+					<a href="{{ detailProfile.menu_url }}" ion-button outline color="danger">Lihat Menu</a>
+				</ion-item>
+				<ion-item>
+					<h2>Foto-foto</h2>
+					<a href="{{ detailProfile.photos_url }}" ion-button outline color="danger">Lihat Foto</a>
+				</ion-item>
+			</ion-list>
+			<button *ngIf="detail" ion-button outline color="primary" (click)="showDetail()">Show Less</button>
+		</ion-card-content>
+
+	</ion-card>
+
+	<div class="profile-reviewers-title">
+		<span><b>Reviewers</b></span>
+		<span>- Top 5 Reviews</span>
+	</div>
+
+	<ion-card class="profile-reviewers">
+		<ion-list>
+		  <ion-item *ngFor="let reviewer of reviewers">
+		    <ion-avatar item-start>
+		      <img src="{{ reviewer.review.user.profile_image }}">
+		    </ion-avatar>
+			<ion-badge item-right color="danger">
+				{{ reviewer.review.rating }}
+			</ion-badge>
+		    <h2>{{ reviewer.review.user.name }}</h2>
+		    <h3>{{ reviewer.review.rating_text }}</h3>
+		    <p text-wrap>{{ reviewer.review.review_text }}</p>
+		  </ion-item>
+		</ion-list>
+	</ion-card>
+
+</ion-content>

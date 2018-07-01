@@ -1,0 +1,115 @@
+page-restaurant-profile {
+	.profile-content{
+		background:map-get($colors,light);
+	}
+	.profile-header{
+		ion-item{
+			background:transparent !important;
+			button{
+				background:transparent;
+				box-shadow:none;
+				ion-icon{
+					font-size:2rem !important;
+				}
+			}
+			p{
+				color:#FFF;
+				font-size:1.5rem;
+			}
+		}
+	}
+	.profile-featured-img
+	{
+		height:300px;
+		overflow:hidden;
+		position: absolute;
+  		width:100% !important;
+  		top:0;
+  		left:0;
+  		z-index:-1;
+	}
+	.profile-featured-img img {
+	  position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  width: 100%;
+	  height:100%;
+	  -webkit-transform: translate(-50%,-50%);
+	      -ms-transform: translate(-50%,-50%);
+	          transform: translate(-50%,-50%);
+	}
+	.profile-details{
+		background:#FFF;
+		margin-top:18rem;
+		ion-card-header{
+			h1{
+				font-weight:bold !important;
+			}
+			p{
+				margin-left:1.5rem;
+				color:map-get($colors, dark);
+			}
+			div{
+				padding:0;
+				margin-top:-20px;
+				margin-right:-10px;
+				span{
+					color:map-get($colors,dark);
+					font-size:12px;
+				}
+				ion-icon{
+					color:map-get($colors,danger2);
+				}
+			}
+		}
+		ion-card-content{
+			ion-badge{
+				color:map-get($colors, dark2);
+				letter-spacing:0.15rem;
+				margin-right:3px;
+				margin-top:3px;
+			}
+			.ratings {
+			    position: relative;
+			    vertical-align: middle;
+			    display: inline-block;
+			    color: map-get($colors, light2);
+			    overflow: hidden;
+			}
+			.full-stars {
+			    position: absolute;
+			    left: 0;
+			    top: 0;
+			    white-space: nowrap;
+			    overflow: hidden;
+			    color: map-get($colors, danger);
+			}
+			.empty-stars:before, .full-stars:before {
+			    content:"\2605\2605\2605\2605\2605";
+			    font-size: 14pt;
+			    letter-spacing:0.5rem;
+			}
+			.empty-stars:before {
+			    -webkit-text-stroke: 1px map-get($colors, light2);
+			}
+			.full-stars:before {
+			    -webkit-text-stroke: 1px map-get($colors, danger);
+			}
+			.points-detail{
+				color:map-get($colors, light);
+				font-weight:bold;
+			}
+			.points-reviews{
+				color:map-get($colors, light2);
+			}
+		}
+	}
+	.profile-reviewers{
+		h2{
+			font-weight:bold;
+		}
+		h3{
+			color:map-get($colors, secondary);
+		}
+	}
+}

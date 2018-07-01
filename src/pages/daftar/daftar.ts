@@ -4,6 +4,8 @@ import { StartPage } from '../../pages/start/start';
 import CryptoJS from 'crypto-js';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
+import { HomePage } from '../../pages/home/home';
 /**
  * Generated class for the DaftarPage page.
  *
@@ -24,7 +26,7 @@ export class DaftarPage {
   password:string;
   key:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http:Http) {
+  constructor(public navCtrl: NavController, private storage: Storage, public navParams: NavParams, private http:Http) {
   	this.passType="password";
     this.key = "kotak";
   }
@@ -61,6 +63,8 @@ export class DaftarPage {
     };
 
     // console.log(data);
+    this.storage.set("username", this.username);
+    this.storage.set("password", hashpassword);
 
     let headers = new Headers();
     headers.append('Content-Type','application/json');
@@ -73,7 +77,8 @@ export class DaftarPage {
              console.log("daftar berhasil");
            
          });
-    
+       
+    this.navCtrl.setRoot(HomePage);
   }
   // submit()
   // {
